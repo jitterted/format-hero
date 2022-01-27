@@ -27,7 +27,7 @@ public class PatternFabricatorTest {
     }
 
     @Test
-    public void givenYearPatternWithDayFragmentResultsInYearDayPattern() throws Exception {
+    public void givenYearPatternAddDayFragmentResultsInYearDayPattern() throws Exception {
         Fabricator fabricator = new Fabricator().with("yyyy");
 
         fabricator = fabricator.with("dd");
@@ -35,4 +35,18 @@ public class PatternFabricatorTest {
         assertThat(fabricator.pattern())
                 .isEqualTo("yyyy-dd");
     }
+
+    @Test
+    public void given_yyyy_and_M_FragmentAdd_dd_FragmentThenPatternHasAllFragments() throws Exception {
+        Fabricator fabricator = new Fabricator()
+                .with("yyyy")
+                .with("M");
+
+        fabricator = fabricator.with("dd");
+
+        assertThat(fabricator.pattern())
+                .isEqualTo("yyyy-M-dd");
+    }
+
+    // test for immutability
 }

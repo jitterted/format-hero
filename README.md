@@ -13,9 +13,9 @@ A tool to help build DateTimeFormatter patterns.
 
     Show updated pattern with example
 
-Select yyyy
->> Pattern is 'yyyy', example: 2022
-Select M
+DONE Select yyyy
+DONE >> Pattern is 'yyyy', example: 2022
+DONE Select M
 >> Pattern is yyyy-M, example: 2022-1
 Select dd
 >> Pattern is yyyy-M-dd, example: 2022-1-26
