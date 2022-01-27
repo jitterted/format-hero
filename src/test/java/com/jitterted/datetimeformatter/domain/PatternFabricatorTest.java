@@ -19,11 +19,20 @@ public class PatternFabricatorTest {
 
     @Test
     public void fabricatorWithYearPatternResultsInFormattedDateOfJustYear() throws Exception {
-        Fabricator fabricator = new Fabricator();
-        fabricator = fabricator.with("yyyy");
+        Fabricator fabricator = new Fabricator().with("yyyy");
 
         ZonedDateTime jan9_2022 = ZonedDateTimeFactory.zoneDateTimeUtc(2022, 1, 9);
         assertThat(fabricator.formatFor(jan9_2022))
                 .isEqualTo("2022");
+    }
+
+    @Test
+    public void givenYearPatternWithDayFragmentResultsInYearDayPattern() throws Exception {
+        Fabricator fabricator = new Fabricator().with("yyyy");
+
+        fabricator = fabricator.with("dd");
+
+        assertThat(fabricator.pattern())
+                .isEqualTo("yyyy-dd");
     }
 }

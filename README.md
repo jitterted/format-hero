@@ -3,7 +3,7 @@
 A tool to help build DateTimeFormatter patterns.
 
 1. Build Date Pattern, by Adding Only, from 3 options
-    Separator is dash `-` by default
+    Separator is dash `-` by default (LATER: can be set via constructor or `with` method)
 
     Select "value"
 
