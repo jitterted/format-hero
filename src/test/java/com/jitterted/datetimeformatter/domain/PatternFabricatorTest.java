@@ -7,6 +7,25 @@ import java.time.ZonedDateTime;
 import static org.assertj.core.api.Assertions.*;
 
 public class PatternFabricatorTest {
+
+    private static final ZonedDateTime JAN_9_2022 = ZonedDateTimeFactory.zoneDateTimeUtc(2022, 1, 9);
+
+    @Test
+    public void newFabricatorHasEmptyPattern() throws Exception {
+        Fabricator fabricator = new Fabricator();
+
+        assertThat(fabricator.pattern())
+                .isEmpty();
+    }
+
+    @Test
+    public void newFabricatorHasEmptyExample() throws Exception {
+        Fabricator fabricator = new Fabricator();
+
+        assertThat(fabricator.formatFor(JAN_9_2022))
+                .isEmpty();
+    }
+
     @Test
     public void newFabricator4DigitYearResultsIn4DigitYearPattern() throws Exception {
         Fabricator fabricator = new Fabricator();
@@ -21,8 +40,7 @@ public class PatternFabricatorTest {
     public void fabricatorWithYearPatternResultsInFormattedDateOfJustYear() throws Exception {
         Fabricator fabricator = new Fabricator().with("yyyy");
 
-        ZonedDateTime jan9_2022 = ZonedDateTimeFactory.zoneDateTimeUtc(2022, 1, 9);
-        assertThat(fabricator.formatFor(jan9_2022))
+        assertThat(fabricator.formatFor(JAN_9_2022))
                 .isEqualTo("2022");
     }
 
