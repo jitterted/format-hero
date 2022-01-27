@@ -13,7 +13,13 @@ public class Fabricator {
 
     private Fabricator(Map<Integer, String> fragments, String fragment) {
         this.fragments.putAll(fragments);
-        this.fragments.put(fragments.size() + 1, fragment);
+        int index = switch (fragment) {
+            case "yyyy" -> 0;
+            case "M", "MM" -> 1;
+            case "d", "dd" -> 2;
+            default -> throw new IllegalArgumentException();
+        };
+        this.fragments.put(index, fragment);
     }
 
     public Fabricator with(String fragment) {

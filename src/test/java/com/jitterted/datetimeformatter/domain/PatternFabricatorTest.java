@@ -58,7 +58,7 @@ public class PatternFabricatorTest {
                 .isNotEqualTo(mm_fabricator);
     }
 
-//    @Test - on hold during refactor
+    @Test
     public void whenAddedYearDayMonthThenOrderIsYearMonthDay() throws Exception {
         // ASSUMES DEFAULT ORDER: Year, Month, Day
         Fabricator fabricator = new Fabricator().with("yyyy")
