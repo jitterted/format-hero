@@ -70,7 +70,7 @@ public class PatternFabricatorTest {
                 .isEqualTo("yyyy-M-dd");
     }
 
-//    @Test - on hold until ordering done
+    @Test
     public void whenMonthExistsThenWithNewMonthReplacesOldMonthPattern() throws Exception {
         Fabricator fabricator = new Fabricator().with("yyyy")
                                                 .with("M")
