@@ -2,18 +2,18 @@ package com.jitterted.datetimeformatter.domain;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Fabricator {
-    private final List<String> fragments = new ArrayList<>();
+    private final Map<Integer, String> fragments = new TreeMap<>();
 
     public Fabricator() {
     }
 
-    private Fabricator(List<String> fragments, String fragment) {
-        this.fragments.addAll(fragments);
-        this.fragments.add(fragment);
+    private Fabricator(Map<Integer, String> fragments, String fragment) {
+        this.fragments.putAll(fragments);
+        this.fragments.put(fragments.size() + 1, fragment);
     }
 
     public Fabricator with(String fragment) {
@@ -21,7 +21,7 @@ public class Fabricator {
     }
 
     public String pattern() {
-        return String.join("-", fragments);
+        return String.join("-", fragments.values());
     }
 
     public String formatFor(ZonedDateTime zoneDateTimeUtc) {

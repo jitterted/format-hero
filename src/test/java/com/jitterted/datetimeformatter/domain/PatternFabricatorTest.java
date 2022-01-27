@@ -57,4 +57,28 @@ public class PatternFabricatorTest {
         assertThat(yyyy_fabricator)
                 .isNotEqualTo(mm_fabricator);
     }
+
+//    @Test - on hold during refactor
+    public void whenAddedYearDayMonthThenOrderIsYearMonthDay() throws Exception {
+        // ASSUMES DEFAULT ORDER: Year, Month, Day
+        Fabricator fabricator = new Fabricator().with("yyyy")
+                                                .with("dd");
+
+        fabricator = fabricator.with("M");
+
+        assertThat(fabricator.pattern())
+                .isEqualTo("yyyy-M-dd");
+    }
+
+//    @Test - on hold until ordering done
+    public void whenMonthExistsThenWithNewMonthReplacesOldMonthPattern() throws Exception {
+        Fabricator fabricator = new Fabricator().with("yyyy")
+                                                .with("M")
+                                                .with("dd");
+
+        fabricator = fabricator.with("MM");
+
+        assertThat(fabricator.pattern())
+                .isEqualTo("yyyy-MM-dd");
+    }
 }
