@@ -48,5 +48,13 @@ public class PatternFabricatorTest {
                 .isEqualTo("yyyy-M-dd");
     }
 
-    // test for immutability
+    @Test
+    public void fabricatorIsImmutable() throws Exception {
+        Fabricator yyyy_fabricator = new Fabricator().with("yyyy");
+
+        Fabricator mm_fabricator = yyyy_fabricator.with("MM");
+
+        assertThat(yyyy_fabricator)
+                .isNotEqualTo(mm_fabricator);
+    }
 }
