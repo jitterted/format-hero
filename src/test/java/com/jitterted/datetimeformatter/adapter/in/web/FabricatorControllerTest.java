@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.ui.ConcurrentModel;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,8 +27,9 @@ class FabricatorControllerTest {
 
         assertThat((String) model.getAttribute("pattern"))
                 .isEmpty();
-        assertThat((String) model.getAttribute("example"))
-                .isEmpty();
+        List<String> examples = (List<String>) model.getAttribute("examples");
+        assertThat(examples)
+                .containsExactly("");
     }
 
     @Test
@@ -43,8 +45,9 @@ class FabricatorControllerTest {
 
         assertThat((String) model.getAttribute("pattern"))
                 .isEqualTo("yyyy");
-        assertThat((String) model.getAttribute("example"))
-                .isEqualTo("2031");
+        List<String> examples = (List<String>) model.getAttribute("examples");
+        assertThat(examples)
+                .containsExactly("2031");
     }
 
 }

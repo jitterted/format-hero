@@ -43,7 +43,7 @@
 <div th:text="${pattern}">yyyy-MM-dd</div>
 
 <h2>Examples</h2>
-<div th:text="${example}">2022-01-27</div>
+<div th:each="example : ${examples}" th:text="${example}">2022-01-27</div>
 
 </body>
 </html>
