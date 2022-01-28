@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'autonumber
+
+actor browser
+boundary controller
+participant "MVC Model" as model
+participant fabricator
+
+browser -> controller: GET /
+controller -> fabricator: pattern()
+fabricator --> controller: ""
+controller -> fabricator: example()
+fabricator --> controller: ""
+controller -> model: addAttributes()
+controller --> browser: fabricator.html
+
+browser -> controller: POST "yyyy"
+note left: button Year 4-digit clicked
+controller -> fabricator: with("yyyy")
+controller --> browser: REDIRECT /
+browser -> controller: GET /
+controller -> fabricator: pattern()
+fabricator --> controller: "yyyy"
+controller -> fabricator: example()
+fabricator --> controller: "2022"
+controller -> model: addAttributes()
+controller --> browser: fabricator.html
+
+browser -> controller: POST "M"
+note left: button short month clicked
+controller -> fabricator: with("M")
+controller --> browser: REDIRECT /
+browser -> controller: GET /
+controller -> fabricator: pattern()
+fabricator --> controller: "yyyy-M"
+controller -> fabricator: example()
+fabricator --> controller: "2022-1"
+controller -> model: addAttributes()
+controller --> browser: fabricator.html
+
+@enduml

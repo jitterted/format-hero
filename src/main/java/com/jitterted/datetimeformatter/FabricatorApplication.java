@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DateTimeFormatterBuilderAndExplorerApplication {
+public class FabricatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DateTimeFormatterBuilderAndExplorerApplication.class, args);
+		SpringApplication.run(FabricatorApplication.class, args);
 	}
 
 }

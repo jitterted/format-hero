@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DateTimeFormatter Pattern Fabricator</title>
+</head>
+<body>
+<h1>DateTimeFormatter Pattern Fabricator</h1>
+<form action="#" th:action="@{/fabricate}" method="post">
+  <table>
+    <tr>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Day-of-Month</th>
+    </tr>
+    <tr>
+      <td>
+        <button value="yy">2-Digit</button>
+      </td>
+      <td>
+        <button value="M">Short Numerical</button>
+      </td>
+      <td>
+        <button value="d">Short Numerical</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button value="yyyy">4-Digit</button>
+      </td>
+      <td>
+        <button value="MM">Long Numerical</button>
+      </td>
+      <td>
+        <button value="dd">Long Numerical</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<h2>Pattern</h2>
+<div th:text="${pattern}">yyyy-MM-dd</div>
+
+<h2>Examples</h2>
+<div th:text="${example}">2022-01-27</div>
+
+</body>
+</html>
