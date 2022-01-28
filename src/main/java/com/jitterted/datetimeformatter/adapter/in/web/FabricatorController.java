@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // INBOUND ADAPTER
 @Controller
@@ -26,7 +27,7 @@ public class FabricatorController {
     }
 
     @PostMapping("/fabricate")
-    public String fabricate(String patternElement) {
+    public String fabricate(@RequestParam("pattern") String patternElement) {
         fabricatorService.withPatternElement(patternElement);
         return "redirect:/";
     }

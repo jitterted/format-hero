@@ -28,12 +28,15 @@ class FabricatorControllerTest {
     @Test
     public void add_4_Digit_Year_PatternIsYyyy() throws Exception {
         FabricatorService fabricatorService = new FabricatorService();
-        FabricatorController fabricatorController = new FabricatorController(fabricatorService);
+        FabricatorController fabricatorController =
+                new FabricatorController(fabricatorService);
 
         fabricatorController.fabricate("yyyy");
 
-        String pattern = fabricatorService.currentPattern();
-        assertThat(pattern)
+        ConcurrentModel model = new ConcurrentModel();
+        fabricatorController.mainView(model);
+
+        assertThat((String) model.getAttribute("pattern"))
                 .isEqualTo("yyyy");
     }
 
