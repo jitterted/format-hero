@@ -28,7 +28,7 @@ public class FabricatorWebTest {
     @Test
     public void getRootPathReturns200Ok() throws Exception {
         when(fabricatorService.currentExamples()).thenReturn(List.of("example"));
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/?id=windy-dolphin-73"))
                .andExpect(status().isOk());
     }
 

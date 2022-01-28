@@ -20,7 +20,10 @@ public class FabricatorController {
     }
 
     @GetMapping("/")
-    public String mainView(Model model) {
+    public String mainView(Model model, @RequestParam(value = "id", defaultValue = "") String id) {
+        if (id.isBlank()) {
+            return "redirect:/?id=windy-dolphin-73";
+        }
         model.addAttribute("pattern", fabricatorService.currentPattern());
         model.addAttribute("examples", fabricatorService.currentExamples());
         return "fabricator";

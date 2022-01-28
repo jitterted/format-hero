@@ -3,12 +3,18 @@
 
 'autonumber
 
+!theme amiga
+
 actor browser
 boundary controller
 participant "MVC Model" as model
 participant fabricator
 
-browser -> controller: GET /
+browser -> controller: GET / (no query param)
+controller -> browser: REDIRECT / (session=HASHID)
+
+browser -> controller: GET / (session=HASHID)
+
 controller -> fabricator: pattern()
 fabricator --> controller: ""
 controller -> fabricator: example()
@@ -19,8 +25,8 @@ controller --> browser: fabricator.html
 browser -> controller: POST "yyyy"
 note left: button Year 4-digit clicked
 controller -> fabricator: with("yyyy")
-controller --> browser: REDIRECT /
-browser -> controller: GET /
+controller --> browser: REDIRECT / (session=HASHID)
+browser -> controller: GET / (session=HASHID)
 controller -> fabricator: pattern()
 fabricator --> controller: "yyyy"
 controller -> fabricator: example()
@@ -31,13 +37,18 @@ controller --> browser: fabricator.html
 browser -> controller: POST "M"
 note left: button short month clicked
 controller -> fabricator: with("M")
-controller --> browser: REDIRECT /
-browser -> controller: GET /
+controller --> browser: REDIRECT / (session=HASHID)
+browser -> controller: GET / (session=HASHID)
 controller -> fabricator: pattern()
 fabricator --> controller: "yyyy-M"
 controller -> fabricator: example()
 fabricator --> controller: "2022-1"
 controller -> model: addAttributes()
 controller --> browser: fabricator.html
+
+browser -> controller: POST "clear"
+note left: button Clear clicked
+controller -> service: clear
+service -> fabricator: NEW
 
 @enduml
