@@ -1,16 +1,11 @@
 package com.jitterted.datetimeformatter.domain;
 
+import com.jitterted.datetimeformatter.SomeZonedDateTimes;
 import org.junit.jupiter.api.Test;
-
-import java.time.ZonedDateTime;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class PatternFabricatorTest {
-
-    private static final ZonedDateTime JAN_3_2022 = ZonedDateTimeFactory.zoneDateTimeUtc(2022, 1, 3);
-    private static final ZonedDateTime OCT_9_2023 = ZonedDateTimeFactory.zoneDateTimeUtc(2023, 10, 9);
-    private static final ZonedDateTime NOV_25_2024 = ZonedDateTimeFactory.zoneDateTimeUtc(2024, 10, 9);
 
     @Test
     public void newFabricatorHasEmptyPattern() throws Exception {
@@ -24,7 +19,7 @@ public class PatternFabricatorTest {
     public void newFabricatorHasEmptyExample() throws Exception {
         Fabricator fabricator = new Fabricator();
 
-        assertThat(fabricator.formatFor(JAN_3_2022))
+        assertThat(fabricator.formatFor(SomeZonedDateTimes.JAN_3_2022))
                 .isEmpty();
     }
 
@@ -42,7 +37,7 @@ public class PatternFabricatorTest {
     public void fabricatorWithYearPatternResultsInFormattedDateOfJustYear() throws Exception {
         Fabricator fabricator = new Fabricator().with("yyyy");
 
-        assertThat(fabricator.formatFor(NOV_25_2024))
+        assertThat(fabricator.formatFor(SomeZonedDateTimes.NOV_25_2024))
                 .isEqualTo("2024");
     }
 

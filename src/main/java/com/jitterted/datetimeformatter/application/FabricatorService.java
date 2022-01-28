@@ -3,15 +3,16 @@ package com.jitterted.datetimeformatter.application;
 import com.jitterted.datetimeformatter.domain.Fabricator;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 public class FabricatorService {
 
-    private final ZonedDateTime exampleDate;
+    private final List<ZonedDateTime> exampleDates;
 
     private Fabricator fabricator = new Fabricator();
 
     public FabricatorService(ZonedDateTime exampleDate) {
-        this.exampleDate = exampleDate;
+        this.exampleDates = List.of(exampleDate);
     }
 
     public String currentPattern() {
@@ -22,7 +23,10 @@ public class FabricatorService {
         fabricator = fabricator.with(patternElement);
     }
 
-    public String currentExample() {
-        return fabricator.formatFor(exampleDate);
+    public List<String> currentExamples() {
+        return exampleDates.stream()
+                           .map(exampleDate ->
+                                        fabricator.formatFor(exampleDate))
+                           .toList();
     }
 }

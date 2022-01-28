@@ -8,6 +8,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -25,7 +27,7 @@ public class FabricatorWebTest {
 
     @Test
     public void getRootPathReturns200Ok() throws Exception {
-        when(fabricatorService.currentExample()).thenReturn("example");
+        when(fabricatorService.currentExamples()).thenReturn(List.of("example"));
         mockMvc.perform(get("/"))
                .andExpect(status().isOk());
     }

@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 // INBOUND ADAPTER
 @Controller
 public class FabricatorController {
@@ -24,8 +22,7 @@ public class FabricatorController {
     @GetMapping("/")
     public String mainView(Model model) {
         model.addAttribute("pattern", fabricatorService.currentPattern());
-        model.addAttribute("examples",
-                           List.of(fabricatorService.currentExample()));
+        model.addAttribute("examples", fabricatorService.currentExamples());
         return "fabricator";
     }
 
