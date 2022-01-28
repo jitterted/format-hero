@@ -16,7 +16,7 @@ class FabricatorControllerTest {
 
     @Test
     public void uponStartPatternAndExampleAreEmptyStrings() throws Exception {
-        FabricatorService fabricatorService = new FabricatorService(JAN_9_2031);
+        FabricatorService fabricatorService = new FabricatorService(List.of(JAN_9_2031));
         FabricatorController fabricatorController = new FabricatorController(fabricatorService);
 
         ConcurrentModel model = new ConcurrentModel();
@@ -34,7 +34,7 @@ class FabricatorControllerTest {
 
     @Test
     public void add_4_Digit_Year_PatternIsYyyy() throws Exception {
-        FabricatorService fabricatorService = new FabricatorService(JAN_9_2031);
+        FabricatorService fabricatorService = new FabricatorService(List.of(JAN_9_2031));
         FabricatorController fabricatorController =
                 new FabricatorController(fabricatorService);
 

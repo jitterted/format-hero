@@ -15,6 +15,10 @@ public class FabricatorService {
         this.exampleDates = List.of(exampleDate);
     }
 
+    public FabricatorService(List<ZonedDateTime> exampleDates) {
+        this.exampleDates = exampleDates;
+    }
+
     public String currentPattern() {
         return fabricator.pattern();
     }
