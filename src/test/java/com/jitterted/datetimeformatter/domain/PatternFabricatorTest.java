@@ -79,13 +79,13 @@ public class PatternFabricatorTest {
     @Test
     public void whenAddedYearDayMonthThenOrderIsYearMonthDay() throws Exception {
         // ASSUMES DEFAULT ORDER: Year, Month, Day
-        Fabricator fabricator = new Fabricator().with("yyyy")
+        Fabricator fabricator = new Fabricator().with("yy")
                                                 .with("dd");
 
         fabricator = fabricator.with("M");
 
         assertThat(fabricator.pattern())
-                .isEqualTo("yyyy-M-dd");
+                .isEqualTo("yy-M-dd");
     }
 
     @Test
@@ -98,5 +98,14 @@ public class PatternFabricatorTest {
 
         assertThat(fabricator.pattern())
                 .isEqualTo("yyyy-MM-dd");
+    }
+
+    @Test
+    public void unknownPatternElementThrowsException() throws Exception {
+        Fabricator fabricator = new Fabricator();
+
+        assertThatThrownBy(() -> fabricator.with("xyz"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Did not understand the Pattern Element 'xyz'");
     }
 }

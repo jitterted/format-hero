@@ -14,10 +14,10 @@ public class Fabricator {
     private Fabricator(Map<Integer, String> fragments, String fragment) {
         this.fragments.putAll(fragments);
         int index = switch (fragment) {
-            case "yyyy" -> 0;
+            case "yy", "yyyy" -> 0;
             case "M", "MM" -> 1;
             case "d", "dd" -> 2;
-            default -> throw new IllegalArgumentException();
+            default -> throw new IllegalArgumentException("Did not understand the Pattern Element '" + fragment + "'");
         };
         this.fragments.put(index, fragment);
     }

@@ -22,7 +22,7 @@ public class FabricatorController {
     @GetMapping("/")
     public String mainView(Model model) {
         model.addAttribute("pattern", fabricatorService.currentPattern());
-        model.addAttribute("example", "");
+        model.addAttribute("example", fabricatorService.currentExample());
         return "fabricator";
     }
 
