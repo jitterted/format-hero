@@ -1,5 +1,6 @@
 package com.jitterted.datetimeformatter.adapter.in.web;
 
+import com.jitterted.datetimeformatter.application.FabricatorService;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.ConcurrentModel;
 
@@ -9,7 +10,8 @@ class FabricatorControllerTest {
 
     @Test
     public void uponStartPatternAndExampleAreEmptyStrings() throws Exception {
-        FabricatorController fabricatorController = new FabricatorController();
+        FabricatorService fabricatorService = new FabricatorService();
+        FabricatorController fabricatorController = new FabricatorController(fabricatorService);
 
         ConcurrentModel model = new ConcurrentModel();
         String pageName = fabricatorController.mainView(model);
@@ -23,15 +25,16 @@ class FabricatorControllerTest {
                 .isEmpty();
     }
 
-//    @Test
-//    public void add_4_Digit_Year_PatternIsYyyy() throws Exception {
-//        FabricatorController fabricatorController = new FabricatorController();
-//
-//        ConcurrentModel model = new ConcurrentModel();
-//        fabricatorController.mainView(model);
-//
-//        assertThat((String) model.getAttribute("pattern"))
-//                .isEqualTo("yyyy");
-//    }
+    @Test
+    public void add_4_Digit_Year_PatternIsYyyy() throws Exception {
+        FabricatorService fabricatorService = new FabricatorService();
+        FabricatorController fabricatorController = new FabricatorController(fabricatorService);
+
+        fabricatorController.fabricate("yyyy");
+
+        String pattern = fabricatorService.currentPattern();
+        assertThat(pattern)
+                .isEqualTo("yyyy");
+    }
 
 }
