@@ -1,4 +1,4 @@
-package com.jitterted.datetimeformatter.domain;
+package com.jitterted.formathero.datetimeformatter.domain;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;

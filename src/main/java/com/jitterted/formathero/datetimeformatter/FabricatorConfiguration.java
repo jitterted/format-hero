@@ -1,7 +1,7 @@
-package com.jitterted.datetimeformatter;
+package com.jitterted.formathero.datetimeformatter;
 
-import com.jitterted.datetimeformatter.application.FabricatorService;
-import com.jitterted.datetimeformatter.domain.ZonedDateTimeFactory;
+import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
+import com.jitterted.formathero.datetimeformatter.domain.ZonedDateTimeFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

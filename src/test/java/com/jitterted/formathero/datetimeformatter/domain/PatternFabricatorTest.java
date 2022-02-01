@@ -1,6 +1,6 @@
-package com.jitterted.datetimeformatter.domain;
+package com.jitterted.formathero.datetimeformatter.domain;
 
-import com.jitterted.datetimeformatter.SomeZonedDateTimes;
+import com.jitterted.formathero.datetimeformatter.SomeZonedDateTimes;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

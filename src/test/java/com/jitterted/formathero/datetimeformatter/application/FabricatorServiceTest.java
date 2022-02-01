@@ -1,10 +1,13 @@
-package com.jitterted.datetimeformatter.application;
+package com.jitterted.formathero.datetimeformatter.application;
 
-import com.jitterted.datetimeformatter.SomeZonedDateTimes;
+import com.jitterted.formathero.datetimeformatter.SomeZonedDateTimes;
+import com.jitterted.formathero.datetimeformatter.application.port.FabricatorRepository;
+import com.jitterted.formathero.datetimeformatter.domain.Fabricator;
 import org.junit.jupiter.api.Test;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -35,6 +38,26 @@ class FabricatorServiceTest {
 
         assertThat(fabricatorService.currentExamples())
                 .containsOnly("2022", "2023", "2024");
+    }
+
+    @Test
+    public void patternIsReturnedForId() throws Exception {
+        FabricatorRepository fabricatorRepository = new FabricatorRepository() {
+            public Optional<Fabricator> findById(String id) {
+                return Optional.ofNullable(new Fabricator().with("yyyy").with("MM"));
+            }
+
+            public void save(Fabricator fabricator, String id) {
+            }
+        };
+        FabricatorService fabricatorService = new FabricatorService(
+                fabricatorRepository,
+                SomeZonedDateTimes.JAN_9_2031);
+
+        String pattern = fabricatorService.currentPattern(); // cold-penguin-23
+
+        assertThat(pattern)
+                .isEqualTo("yyyy-MM");
     }
 
 }

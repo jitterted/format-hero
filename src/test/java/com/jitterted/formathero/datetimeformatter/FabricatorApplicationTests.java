@@ -1,4 +1,4 @@
-package com.jitterted.datetimeformatter;
+package com.jitterted.formathero.datetimeformatter;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

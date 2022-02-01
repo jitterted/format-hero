@@ -1,6 +1,6 @@
-package com.jitterted.datetimeformatter.adapter.in.web;
+package com.jitterted.formathero.datetimeformatter.adapter.in.web;
 
-import com.jitterted.datetimeformatter.application.FabricatorService;
+import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +26,7 @@ public class FabricatorController {
         }
         model.addAttribute("pattern", fabricatorService.currentPattern());
         model.addAttribute("examples", fabricatorService.currentExamples());
+        model.addAttribute("id", id);
         return "fabricator";
     }
 

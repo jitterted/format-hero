@@ -1,7 +1,7 @@
-package com.jitterted.datetimeformatter.adapter.in.web;
+package com.jitterted.formathero.datetimeformatter.adapter.in.web;
 
-import com.jitterted.datetimeformatter.SomeZonedDateTimes;
-import com.jitterted.datetimeformatter.application.FabricatorService;
+import com.jitterted.formathero.datetimeformatter.SomeZonedDateTimes;
+import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.ConcurrentModel;
 
@@ -22,4 +22,5 @@ public class FabricatorControllerIdTest {
         assertThat(redirectPage)
                 .isEqualTo("redirect:/?id=windy-dolphin-73");
     }
+
 }

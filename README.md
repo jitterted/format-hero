@@ -1,4 +1,9 @@
-# DateTimeFormatter Pattern Fabricator
+# Format Hero
+
+A tiny tool to help create patterns.
+The first one is to create patterns for the `DateTimeFormatter` class.
+
+## 1. DateTimeFormatter Pattern Fabricator
 
 A tool to help build DateTimeFormatter patterns.
 

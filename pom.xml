@@ -8,10 +8,10 @@
 		<version>2.6.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.jitterted.datetimeformatter</groupId>
-	<artifactId>pattern-fabricator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>DateTimeFormatter pattern fabricator and explorer</name>
+	<groupId>com.jitterted</groupId>
+	<artifactId>format-hero</artifactId>
+	<version>0.0.1</version>
+	<name>Format Hero</name>
 	<description>DateTimeFormatter pattern fabricator and explorer</description>
 	<properties>
 		<java.version>17</java.version>
