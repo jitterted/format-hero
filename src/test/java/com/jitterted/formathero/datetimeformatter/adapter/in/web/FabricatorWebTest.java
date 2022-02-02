@@ -1,7 +1,7 @@
 package com.jitterted.formathero.datetimeformatter.adapter.in.web;
 
 import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
-import com.jitterted.formathero.datetimeformatter.application.IdGenerator;
+import com.jitterted.formathero.datetimeformatter.application.port.IdGenerator;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

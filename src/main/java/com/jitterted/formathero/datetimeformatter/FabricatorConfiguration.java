@@ -1,10 +1,10 @@
 package com.jitterted.formathero.datetimeformatter;
 
 import com.jitterted.formathero.datetimeformatter.adapter.out.caffeine.CaffeineFabricatorRepository;
+import com.jitterted.formathero.datetimeformatter.adapter.out.humanreadable.ReadableIdGenerator;
 import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
-import com.jitterted.formathero.datetimeformatter.application.IdGenerator;
-import com.jitterted.formathero.datetimeformatter.application.StubIdGenerator;
 import com.jitterted.formathero.datetimeformatter.application.port.FabricatorRepository;
+import com.jitterted.formathero.datetimeformatter.application.port.IdGenerator;
 import com.jitterted.formathero.datetimeformatter.domain.ZonedDateTimeFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +31,6 @@ public class FabricatorConfiguration {
 
     @Bean
     public IdGenerator idGenerator() {
-        return new StubIdGenerator();
+        return new ReadableIdGenerator();
     }
 }
