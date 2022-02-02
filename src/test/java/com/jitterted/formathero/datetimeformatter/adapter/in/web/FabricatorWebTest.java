@@ -27,7 +27,7 @@ public class FabricatorWebTest {
 
     @Test
     public void getRootPathReturns200Ok() throws Exception {
-        when(fabricatorService.currentExamples()).thenReturn(List.of("example"));
+        when(fabricatorService.currentExamples("windy-dolphin-73")).thenReturn(List.of("example"));
         mockMvc.perform(get("/?id=windy-dolphin-73"))
                .andExpect(status().isOk());
     }
@@ -35,6 +35,7 @@ public class FabricatorWebTest {
     @Test
     public void postToAddPatternElementRedirects() throws Exception {
         mockMvc.perform(post("/fabricate")
+                                .param("id", "frozen-unicorn-79")
                                 .param("pattern", "yy"))
                .andExpect(status().is3xxRedirection());
     }

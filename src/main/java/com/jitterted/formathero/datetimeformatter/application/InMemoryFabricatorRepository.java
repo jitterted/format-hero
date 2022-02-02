@@ -7,8 +7,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-class InMemoryFabricatorRepository implements FabricatorRepository {
-    private Map<String, Fabricator> map = new ConcurrentHashMap<>();
+public class InMemoryFabricatorRepository implements FabricatorRepository {
+
+    private final Map<String, Fabricator> map = new ConcurrentHashMap<>();
+
     @Override
     public Optional<Fabricator> findById(String id) {
         return Optional.ofNullable(map.get(id));

@@ -8,7 +8,9 @@ import java.util.TreeMap;
 public class Fabricator {
     private final Map<Integer, String> fragments = new TreeMap<>();
 
-    public Fabricator() {
+    public static final Fabricator EMPTY = new Fabricator();
+
+    private Fabricator() {
     }
 
     private Fabricator(Map<Integer, String> fragments, String fragment) {

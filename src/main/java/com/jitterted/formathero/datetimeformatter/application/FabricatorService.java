@@ -25,28 +25,27 @@ public class FabricatorService {
         this.fabricatorRepository = fabricatorRepository;
     }
 
-    public String currentPattern() {
-        return getFabricator().pattern();
+    public void withPatternElement(String patternElement, String patternId) {
+        Fabricator fabricator = findBy(patternId)
+                                .with(patternElement);
+        fabricatorRepository.save(fabricator, patternId);
     }
 
-    public void withPatternElement(String patternElement) {
-        setFabricator(getFabricator().with(patternElement));
-    }
-
-    public List<String> currentExamples() {
+    public List<String> currentExamples(String patternId) {
+        Fabricator fabricator = findBy(patternId);
         return exampleDates.stream()
-                           .map(exampleDate ->
-                                        getFabricator().formatFor(exampleDate))
+                           .map(fabricator::formatFor)
                            .toList();
     }
 
-    private Fabricator getFabricator() {
-        return fabricatorRepository.findById("temp")
-                .orElseGet(Fabricator::new);
+    public String patternFor(String patternId) {
+        Fabricator fabricator = findBy(patternId);
+        return fabricator.pattern();
     }
 
-    private void setFabricator(Fabricator fabricator) {
-        fabricatorRepository.save(fabricator, "temp");
+    private Fabricator findBy(String patternId) {
+        return fabricatorRepository
+                .findById(patternId)
+                .orElse(Fabricator.EMPTY);
     }
-
 }

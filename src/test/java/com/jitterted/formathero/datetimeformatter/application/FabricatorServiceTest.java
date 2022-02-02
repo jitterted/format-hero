@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -18,9 +17,9 @@ class FabricatorServiceTest {
         FabricatorService fabricatorService = new FabricatorService(
                 List.of(SomeZonedDateTimes.OCT_9_2023));
 
-        fabricatorService.withPatternElement("yyyy");
+        fabricatorService.withPatternElement("yyyy", "valid-pattern-23");
 
-        assertThat(fabricatorService.currentExamples())
+        assertThat(fabricatorService.currentExamples("valid-pattern-23"))
                 .containsOnly("2023");
     }
 
@@ -34,27 +33,23 @@ class FabricatorServiceTest {
         FabricatorService fabricatorService = new FabricatorService(
                 exampleDates);
 
-        fabricatorService.withPatternElement("yyyy");
+        fabricatorService.withPatternElement("yyyy", "three-examples");
 
-        assertThat(fabricatorService.currentExamples())
+        assertThat(fabricatorService.currentExamples("three-examples"))
                 .containsOnly("2022", "2023", "2024");
     }
 
     @Test
     public void patternIsReturnedForId() throws Exception {
-        FabricatorRepository fabricatorRepository = new FabricatorRepository() {
-            public Optional<Fabricator> findById(String id) {
-                return Optional.ofNullable(new Fabricator().with("yyyy").with("MM"));
-            }
-
-            public void save(Fabricator fabricator, String id) {
-            }
-        };
+        FabricatorRepository fabricatorRepository = new InMemoryFabricatorRepository();
+        String coldPenguinId = "cold-penguin-23";
+        Fabricator fabricator = Fabricator.EMPTY.with("yyyy").with("MM");
+        fabricatorRepository.save(fabricator, coldPenguinId);
         FabricatorService fabricatorService = new FabricatorService(
                 fabricatorRepository,
                 SomeZonedDateTimes.JAN_9_2031);
 
-        String pattern = fabricatorService.currentPattern(); // cold-penguin-23
+        String pattern = fabricatorService.patternFor(coldPenguinId);
 
         assertThat(pattern)
                 .isEqualTo("yyyy-MM");

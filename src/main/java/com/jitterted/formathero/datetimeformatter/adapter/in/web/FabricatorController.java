@@ -24,15 +24,16 @@ public class FabricatorController {
         if (id.isBlank()) {
             return "redirect:/?id=windy-dolphin-73";
         }
-        model.addAttribute("pattern", fabricatorService.currentPattern());
-        model.addAttribute("examples", fabricatorService.currentExamples());
+        model.addAttribute("pattern", fabricatorService.patternFor(id));
+        model.addAttribute("examples", fabricatorService.currentExamples(id));
         model.addAttribute("id", id);
         return "fabricator";
     }
 
     @PostMapping("/fabricate")
-    public String fabricate(@RequestParam("pattern") String patternElement) {
-        fabricatorService.withPatternElement(patternElement);
+    public String fabricate(@RequestParam("pattern") String patternElement,
+                            @RequestParam(value = "id") String id) {
+        fabricatorService.withPatternElement(patternElement, id);
         return "redirect:/";
     }
 }

@@ -9,7 +9,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void newFabricatorHasEmptyPattern() throws Exception {
-        Fabricator fabricator = new Fabricator();
+        Fabricator fabricator = Fabricator.EMPTY;
 
         assertThat(fabricator.pattern())
                 .isEmpty();
@@ -17,7 +17,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void newFabricatorHasEmptyExample() throws Exception {
-        Fabricator fabricator = new Fabricator();
+        Fabricator fabricator = Fabricator.EMPTY;
 
         assertThat(fabricator.formatFor(SomeZonedDateTimes.JAN_3_2022))
                 .isEmpty();
@@ -25,7 +25,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void newFabricator4DigitYearResultsIn4DigitYearPattern() throws Exception {
-        Fabricator fabricator = new Fabricator();
+        Fabricator fabricator = Fabricator.EMPTY;
 
         Fabricator yyyy = fabricator.with("yyyy");
 
@@ -35,7 +35,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void fabricatorWithYearPatternResultsInFormattedDateOfJustYear() throws Exception {
-        Fabricator fabricator = new Fabricator().with("yyyy");
+        Fabricator fabricator = Fabricator.EMPTY.with("yyyy");
 
         assertThat(fabricator.formatFor(SomeZonedDateTimes.NOV_25_2024))
                 .isEqualTo("2024");
@@ -43,7 +43,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void givenYearPatternAddDayFragmentResultsInYearDayPattern() throws Exception {
-        Fabricator fabricator = new Fabricator().with("yyyy");
+        Fabricator fabricator = Fabricator.EMPTY.with("yyyy");
 
         fabricator = fabricator.with("dd");
 
@@ -53,7 +53,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void given_yyyy_and_M_FragmentAdd_dd_FragmentThenPatternHasAllFragments() throws Exception {
-        Fabricator fabricator = new Fabricator()
+        Fabricator fabricator = Fabricator.EMPTY
                 .with("yyyy")
                 .with("M");
 
@@ -65,7 +65,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void fabricatorIsImmutable() throws Exception {
-        Fabricator yyyy_fabricator = new Fabricator().with("yyyy");
+        Fabricator yyyy_fabricator = Fabricator.EMPTY.with("yyyy");
 
         Fabricator mm_fabricator = yyyy_fabricator.with("MM");
 
@@ -76,7 +76,7 @@ public class PatternFabricatorTest {
     @Test
     public void whenAddedYearDayMonthThenOrderIsYearMonthDay() throws Exception {
         // ASSUMES DEFAULT ORDER: Year, Month, Day
-        Fabricator fabricator = new Fabricator().with("yy")
+        Fabricator fabricator = Fabricator.EMPTY.with("yy")
                                                 .with("dd");
 
         fabricator = fabricator.with("M");
@@ -87,7 +87,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void whenMonthExistsThenWithNewMonthReplacesOldMonthPattern() throws Exception {
-        Fabricator fabricator = new Fabricator().with("yyyy")
+        Fabricator fabricator = Fabricator.EMPTY.with("yyyy")
                                                 .with("M")
                                                 .with("dd");
 
@@ -99,7 +99,7 @@ public class PatternFabricatorTest {
 
     @Test
     public void unknownPatternElementThrowsException() throws Exception {
-        Fabricator fabricator = new Fabricator();
+        Fabricator fabricator = Fabricator.EMPTY;
 
         assertThatThrownBy(() -> fabricator.with("xyz"))
                 .isInstanceOf(IllegalArgumentException.class)

@@ -31,11 +31,12 @@ class FabricatorControllerTest {
 
     @Test
     public void add_4_Digit_Year_PatternIsYyyy() throws Exception {
-        FabricatorService fabricatorService = new FabricatorService(List.of(SomeZonedDateTimes.JAN_9_2031));
+        FabricatorService fabricatorService = new FabricatorService(
+                SomeZonedDateTimes.JAN_9_2031);
         FabricatorController fabricatorController =
                 new FabricatorController(fabricatorService);
 
-        fabricatorController.fabricate("yyyy");
+        fabricatorController.fabricate("yyyy", "windy-dolphin-73");
 
         ConcurrentModel model = new ConcurrentModel();
         fabricatorController.mainView(model, "windy-dolphin-73");
