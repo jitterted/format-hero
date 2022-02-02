@@ -1,6 +1,8 @@
 package com.jitterted.formathero.datetimeformatter;
 
+import com.jitterted.formathero.datetimeformatter.adapter.out.caffeine.CaffeineFabricatorRepository;
 import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
+import com.jitterted.formathero.datetimeformatter.application.port.FabricatorRepository;
 import com.jitterted.formathero.datetimeformatter.domain.ZonedDateTimeFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +19,8 @@ public class FabricatorConfiguration {
 
     @Bean
     public FabricatorService fabricatorService() {
-        return new FabricatorService(List.of(
+        FabricatorRepository fabricatorRepository = new CaffeineFabricatorRepository();
+        return new FabricatorService(fabricatorRepository, List.of(
                 JAN_3_2022,
                 OCT_9_2023,
                 NOV_25_2024

@@ -15,7 +15,7 @@ public class FabricatorControllerIdTest {
 
     @Test
     public void mainViewWithoutIdThenRedirectsWithId() throws Exception {
-        FabricatorService fabricatorService = new FabricatorService(List.of(SomeZonedDateTimes.JAN_9_2031));
+        FabricatorService fabricatorService = new FabricatorService(new InMemoryFabricatorRepository(), List.of(SomeZonedDateTimes.JAN_9_2031));
         FabricatorController fabricatorController = new FabricatorController(fabricatorService);
 
         ConcurrentModel model = new ConcurrentModel();
@@ -34,7 +34,7 @@ public class FabricatorControllerIdTest {
         repo.save(Fabricator.EMPTY.with(coldPenguinPattern), coldPenguinId);
         repo.save(Fabricator.EMPTY.with(windyDolphinPattern), "windy-dolphin-73");
 
-        FabricatorService fabricatorService = new FabricatorService(repo, SomeZonedDateTimes.JAN_9_2031);
+        FabricatorService fabricatorService = new FabricatorService(repo, List.of(SomeZonedDateTimes.JAN_9_2031));
         FabricatorController fabricatorController = new FabricatorController(fabricatorService);
 
         ConcurrentModel model = new ConcurrentModel();

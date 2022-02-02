@@ -15,7 +15,7 @@ class FabricatorServiceTest {
     @Test
     public void withValidPatternAndOneExampleDateReturnsOnlyOneExample() throws Exception {
         FabricatorService fabricatorService = new FabricatorService(
-                List.of(SomeZonedDateTimes.OCT_9_2023));
+                new InMemoryFabricatorRepository(), List.of(SomeZonedDateTimes.OCT_9_2023));
 
         fabricatorService.withPatternElement("yyyy", "valid-pattern-23");
 
@@ -31,7 +31,7 @@ class FabricatorServiceTest {
                 SomeZonedDateTimes.NOV_25_2024
         );
         FabricatorService fabricatorService = new FabricatorService(
-                exampleDates);
+                new InMemoryFabricatorRepository(), exampleDates);
 
         fabricatorService.withPatternElement("yyyy", "three-examples");
 
@@ -47,7 +47,7 @@ class FabricatorServiceTest {
         fabricatorRepository.save(fabricator, coldPenguinId);
         FabricatorService fabricatorService = new FabricatorService(
                 fabricatorRepository,
-                SomeZonedDateTimes.JAN_9_2031);
+                List.of(SomeZonedDateTimes.JAN_9_2031));
 
         String pattern = fabricatorService.patternFor(coldPenguinId);
 

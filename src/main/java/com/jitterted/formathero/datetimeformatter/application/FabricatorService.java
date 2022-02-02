@@ -9,19 +9,11 @@ import java.util.List;
 public class FabricatorService {
 
     private final List<ZonedDateTime> exampleDates;
-    private FabricatorRepository fabricatorRepository
-            = new InMemoryFabricatorRepository();
+    private final FabricatorRepository fabricatorRepository;
 
-    public FabricatorService(ZonedDateTime exampleDate) {
-        this.exampleDates = List.of(exampleDate);
-    }
-
-    public FabricatorService(List<ZonedDateTime> exampleDates) {
+   public FabricatorService(FabricatorRepository fabricatorRepository,
+                             List<ZonedDateTime> exampleDates) {
         this.exampleDates = exampleDates;
-    }
-
-    public FabricatorService(FabricatorRepository fabricatorRepository, ZonedDateTime exampleDate) {
-        exampleDates = List.of(exampleDate);
         this.fabricatorRepository = fabricatorRepository;
     }
 
