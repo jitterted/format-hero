@@ -4,40 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>DateTimeFormatter Pattern Fabricator</title>
+    <link rel="icon"
+          href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/woman-superhero-medium-dark-skin-tone_1f9b8-1f3fe-200d-2640-fe0f.png">
 </head>
 <body>
 <h1>DateTimeFormatter Pattern Fabricator</h1>
 <form action="#" th:action="@{/fabricate}" method="post">
-  <input type="hidden" th:value="${id}" name="id">
-  <table>
-    <tr>
-      <th>Year</th>
-      <th>Month</th>
-      <th>Day-of-Month</th>
-    </tr>
-    <tr>
-      <td>
-        <button name="pattern" value="yy">2-Digit</button>
-      </td>
-      <td>
-        <button name="pattern" value="M">Short Numerical</button>
-      </td>
-      <td>
-        <button name="pattern" value="d">Short Numerical</button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button name="pattern" value="yyyy">4-Digit</button>
-      </td>
-      <td>
-        <button name="pattern" value="MM">Long Numerical</button>
-      </td>
-      <td>
-        <button name="pattern" value="dd">Long Numerical</button>
-      </td>
-    </tr>
-  </table>
+    <input type="hidden" th:value="${id}" name="id">
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day-of-Month</th>
+        </tr>
+        <tr>
+            <td>
+                <button name="pattern" value="yy">2-Digit</button>
+            </td>
+            <td>
+                <button name="pattern" value="M">Short Numerical</button>
+            </td>
+            <td>
+                <button name="pattern" value="d">Short Numerical</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button name="pattern" value="yyyy">4-Digit</button>
+            </td>
+            <td>
+                <button name="pattern" value="MM">Long Numerical</button>
+            </td>
+            <td>
+                <button name="pattern" value="dd">Long Numerical</button>
+            </td>
+        </tr>
+    </table>
 </form>
 
 <h2>Pattern</h2>
