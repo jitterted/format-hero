@@ -1,6 +1,7 @@
 package com.jitterted.formathero.datetimeformatter.adapter.in.web;
 
 import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
+import com.jitterted.formathero.datetimeformatter.application.IdGenerator;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class FabricatorWebTest {
 
     @MockBean
     FabricatorService fabricatorService;
+
+    @MockBean
+    IdGenerator idGenerator;
 
     @Test
     public void getRootPathReturns200Ok() throws Exception {

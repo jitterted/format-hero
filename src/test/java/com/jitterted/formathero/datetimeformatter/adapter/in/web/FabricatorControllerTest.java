@@ -3,6 +3,7 @@ package com.jitterted.formathero.datetimeformatter.adapter.in.web;
 import com.jitterted.formathero.datetimeformatter.SomeZonedDateTimes;
 import com.jitterted.formathero.datetimeformatter.adapter.out.caffeine.CaffeineFabricatorRepository;
 import com.jitterted.formathero.datetimeformatter.application.FabricatorService;
+import com.jitterted.formathero.datetimeformatter.application.StubIdGenerator;
 import com.jitterted.formathero.datetimeformatter.application.port.FabricatorRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.ConcurrentModel;
@@ -17,7 +18,7 @@ class FabricatorControllerTest {
     public void uponStartPatternAndExampleAreEmptyStrings() throws Exception {
         FabricatorRepository fabricatorRepository = new CaffeineFabricatorRepository();
         FabricatorService fabricatorService = new FabricatorService(fabricatorRepository, List.of(SomeZonedDateTimes.JAN_9_2031));
-        FabricatorController fabricatorController = new FabricatorController(fabricatorService);
+        FabricatorController fabricatorController = new FabricatorController(fabricatorService, new StubIdGenerator());
 
         ConcurrentModel model = new ConcurrentModel();
         String pageName = fabricatorController.mainView(model, "windy-dolphin-73");
@@ -39,7 +40,7 @@ class FabricatorControllerTest {
                 fabricatorRepository,
                 List.of(SomeZonedDateTimes.JAN_9_2031));
         FabricatorController fabricatorController =
-                new FabricatorController(fabricatorService);
+                new FabricatorController(fabricatorService, new StubIdGenerator());
         String id = "blue-penguin-22";
 
         String page = fabricatorController.fabricate("yyyy", id);
