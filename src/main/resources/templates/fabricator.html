@@ -3,12 +3,13 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>DateTimeFormatter Pattern Fabricator</title>
+    <title>Format Hero!</title>
     <link rel="icon"
           href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/woman-superhero-medium-dark-skin-tone_1f9b8-1f3fe-200d-2640-fe0f.png">
 </head>
 <body>
-<h1>DateTimeFormatter Pattern Fabricator</h1>
+<h1>Format Hero</h1>
+<h2>Generate Patterns for Java's <code>DateTimeFormatter</code></h2>
 <form action="#" th:action="@{/fabricate}" method="post">
     <input type="hidden" th:value="${id}" name="id">
     <table>
@@ -42,10 +43,10 @@
     </table>
 </form>
 
-<h2>Pattern</h2>
+<h2>Your Pattern</h2>
 <div th:text="${pattern}">yyyy-MM-dd</div>
 
-<h2>Examples</h2>
+<h2>Some Examples</h2>
 <div th:each="example : ${examples}" th:text="${example}">2022-01-27</div>
 
 </body>
