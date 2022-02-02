@@ -34,6 +34,6 @@ public class FabricatorController {
     public String fabricate(@RequestParam("pattern") String patternElement,
                             @RequestParam(value = "id") String id) {
         fabricatorService.withPatternElement(patternElement, id);
-        return "redirect:/";
+        return "redirect:/?id=" + id;
     }
 }

@@ -35,12 +35,15 @@ class FabricatorControllerTest {
                 SomeZonedDateTimes.JAN_9_2031);
         FabricatorController fabricatorController =
                 new FabricatorController(fabricatorService);
+        String id = "blue-penguin-22";
 
-        fabricatorController.fabricate("yyyy", "windy-dolphin-73");
+        String page = fabricatorController.fabricate("yyyy", id);
+
+        assertThat(page)
+                .isEqualTo("redirect:/?id=" + id);
 
         ConcurrentModel model = new ConcurrentModel();
-        fabricatorController.mainView(model, "windy-dolphin-73");
-
+        fabricatorController.mainView(model, id);
         assertThat((String) model.getAttribute("pattern"))
                 .isEqualTo("yyyy");
         List<String> examples = (List<String>) model.getAttribute("examples");
