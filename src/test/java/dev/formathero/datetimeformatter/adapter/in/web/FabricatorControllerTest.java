@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 class FabricatorControllerTest {
 
     @Test
-    public void uponStartPatternAndExampleAreEmptyStrings() throws Exception {
+    void uponStartPatternAndExampleAreEmptyStrings() throws Exception {
         FabricatorRepository fabricatorRepository = new CaffeineFabricatorRepository();
         FabricatorService fabricatorService = new FabricatorService(fabricatorRepository, List.of(SomeZonedDateTimes.JAN_9_2031));
         FabricatorController fabricatorController = new FabricatorController(fabricatorService, new StubIdGenerator());
@@ -34,7 +34,7 @@ class FabricatorControllerTest {
     }
 
     @Test
-    public void add_4_Digit_Year_PatternIsYyyy() throws Exception {
+    void add_4_Digit_Year_PatternIsYyyy() throws Exception {
         FabricatorRepository fabricatorRepository = new CaffeineFabricatorRepository();
         FabricatorService fabricatorService = new FabricatorService(
                 fabricatorRepository,

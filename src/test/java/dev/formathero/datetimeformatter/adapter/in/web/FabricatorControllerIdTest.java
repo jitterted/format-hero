@@ -12,10 +12,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class FabricatorControllerIdTest {
+class FabricatorControllerIdTest {
 
     @Test
-    public void mainViewWithoutIdThenRedirectsWithId() throws Exception {
+    void mainViewWithoutIdThenRedirectsWithId() throws Exception {
         FabricatorService fabricatorService = new FabricatorService(new InMemoryFabricatorRepository(), List.of(SomeZonedDateTimes.JAN_9_2031));
         FabricatorController fabricatorController = new FabricatorController(fabricatorService, new StubIdGenerator());
 
@@ -27,7 +27,7 @@ public class FabricatorControllerIdTest {
     }
 
     @Test
-    public void mainViewWithIdThenReturnsPageWithContentForThatId() throws Exception {
+    void mainViewWithIdThenReturnsPageWithContentForThatId() throws Exception {
         String windyDolphinPattern = "yyyy";
         String coldPenguinPattern = "MM";
         String coldPenguinId = "cold-penguin-23";

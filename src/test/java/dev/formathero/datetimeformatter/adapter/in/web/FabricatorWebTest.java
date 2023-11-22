@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest
 @Tag("integration")
-public class FabricatorWebTest {
+class FabricatorWebTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -30,14 +30,14 @@ public class FabricatorWebTest {
     IdGenerator idGenerator;
 
     @Test
-    public void getRootPathReturns200Ok() throws Exception {
+    void getRootPathReturns200Ok() throws Exception {
         when(fabricatorService.currentExamples("windy-dolphin-73")).thenReturn(List.of("example"));
         mockMvc.perform(get("/?id=windy-dolphin-73"))
                .andExpect(status().isOk());
     }
 
     @Test
-    public void postToAddPatternElementRedirects() throws Exception {
+    void postToAddPatternElementRedirects() throws Exception {
         mockMvc.perform(post("/fabricate")
                                 .param("id", "frozen-unicorn-79")
                                 .param("pattern", "yy"))

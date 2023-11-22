@@ -24,7 +24,7 @@ public class FabricatorController {
     }
 
     @GetMapping("/")
-    public String mainView(Model model, @RequestParam(value = "id", defaultValue = "") String id) {
+    public String mainView(Model model, @RequestParam(defaultValue = "") String id) {
         if (id.isBlank()) {
             return "redirect:/?id=" + idGenerator.newId();
         }
@@ -36,7 +36,7 @@ public class FabricatorController {
 
     @PostMapping("/fabricate")
     public String fabricate(@RequestParam("pattern") String patternElement,
-                            @RequestParam(value = "id") String id) {
+                            @RequestParam String id) {
         fabricatorService.withPatternElement(patternElement, id);
         return "redirect:/?id=" + id;
     }

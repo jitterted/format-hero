@@ -10,10 +10,10 @@ import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 
 @Tag("architecture")
 @AnalyzeClasses(packages = "dev.formathero.datetimeformatter")
-public class HexArchTest {
+class HexArchTest {
 
     @Test
-    public void applicationMustNotBeAccessedByDomain() {
+    void applicationMustNotBeAccessedByDomain() {
         JavaClasses importedClasses = new ClassFileImporter().importPackages("dev.formathero.datetimeformatter");
 
         var rule = layeredArchitecture()

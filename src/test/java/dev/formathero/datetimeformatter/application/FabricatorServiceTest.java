@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 class FabricatorServiceTest {
 
     @Test
-    public void withValidPatternAndOneExampleDateReturnsOnlyOneExample() throws Exception {
+    void withValidPatternAndOneExampleDateReturnsOnlyOneExample() throws Exception {
         FabricatorService fabricatorService = new FabricatorService(
                 new InMemoryFabricatorRepository(), List.of(SomeZonedDateTimes.OCT_9_2023));
 
@@ -24,7 +24,7 @@ class FabricatorServiceTest {
     }
 
     @Test
-    public void withValidPatternAnd3ExampleDatesReturns3Examples() throws Exception {
+    void withValidPatternAnd3ExampleDatesReturns3Examples() throws Exception {
         List<ZonedDateTime> exampleDates = List.of(
                 SomeZonedDateTimes.JAN_3_2022,
                 SomeZonedDateTimes.OCT_9_2023,
@@ -40,7 +40,7 @@ class FabricatorServiceTest {
     }
 
     @Test
-    public void patternIsReturnedForId() throws Exception {
+    void patternIsReturnedForId() throws Exception {
         FabricatorRepository fabricatorRepository = new InMemoryFabricatorRepository();
         String coldPenguinId = "cold-penguin-23";
         Fabricator fabricator = Fabricator.EMPTY.with("yyyy").with("MM");
