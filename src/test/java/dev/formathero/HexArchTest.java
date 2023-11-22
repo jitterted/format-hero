@@ -16,7 +16,7 @@ class HexArchTest {
     void applicationMustNotBeAccessedByDomain() {
         JavaClasses importedClasses = new ClassFileImporter().importPackages("dev.formathero.datetimeformatter");
 
-        var rule = layeredArchitecture()
+        var rule = layeredArchitecture().consideringAllDependencies()
                 .layer("Adapter").definedBy("..adapter..")
                 .layer("Application").definedBy("..application..")
                 .layer("Domain").definedBy("..domain..")
