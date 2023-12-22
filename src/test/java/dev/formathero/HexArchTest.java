@@ -16,7 +16,7 @@ class HexArchTest {
     void applicationMustNotBeAccessedByDomain() {
         JavaClasses importedClasses = new ClassFileImporter().importPackages("dev.formathero.datetimeformatter");
 
-        var rule = layeredArchitecture()
+        layeredArchitecture().consideringAllDependencies()
                 .layer("Adapter").definedBy("..adapter..")
                 .layer("Application").definedBy("..application..")
                 .layer("Domain").definedBy("..domain..")
@@ -24,8 +24,8 @@ class HexArchTest {
 
                 .whereLayer("Adapter").mayOnlyBeAccessedByLayers("Startup")
                 .whereLayer("Application").mayOnlyBeAccessedByLayers("Adapter", "Startup")
-                .whereLayer("Domain").mayOnlyBeAccessedByLayers("Application", "Adapter", "Startup");
+                .whereLayer("Domain").mayOnlyBeAccessedByLayers("Application", "Adapter", "Startup")
 
-        rule.check(importedClasses);
+                .check(importedClasses);
     }
 }
