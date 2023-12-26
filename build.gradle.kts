@@ -25,7 +25,7 @@ dependencies {
 group = "com.jitterted"
 version = "0.0.3"
 description = "Format Hero"
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_19
 
 tasks.withType<JavaCompile>() {
     options.encoding = "UTF-8"
