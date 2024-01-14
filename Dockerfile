@@ -1,7 +1,6 @@
 FROM eclipse-temurin:21-jdk as build
 COPY . /app
 WORKDIR /app
-RUN ls -alF
 RUN ./mvnw package -DskipTests
 RUN mv -f target/*.jar app.jar
 
