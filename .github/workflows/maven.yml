@@ -17,4 +17,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build and Test with Maven
-      run: mvn -B verify --file pom.xml
+      run: mvn -B verify
