@@ -1,7 +1,6 @@
-name: Build, Test, and Verify
+name: Build, Test, and Verify upon Push with JDK 21
 
-on:
-  push:
+on: push
 
 jobs:
   build:
@@ -17,4 +16,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build and Test with Maven
-      run: mvn -B verify
+      run: mvn --batch-mode --no-transfer-progress verify
